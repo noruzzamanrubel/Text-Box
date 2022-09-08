@@ -1,1 +1,0 @@
-{"version":3,"file":"./style-index.css","mappings":";;;AAAA;EACC;EACA;EACA;EACA;AACD,C","sources":["webpack://boilerplate/./src/style.scss"],"sourcesContent":[".wp-block-boomdevs-text-box {\n\tbackground-color: #00f;\n\tpadding: 15px;\n\tborder-radius: 15px;\n\tcolor: #fff;\n}\n"],"names":[],"sourceRoot":""}

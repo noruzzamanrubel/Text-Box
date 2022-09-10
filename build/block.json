@@ -20,9 +20,7 @@
   "style": "file:./style-index.css",
   "attributes": {
     "text": {
-      "type": "string",
-      "source": "html",
-      "selector": ".text"
+      "type": "string"
     }
   }
 }

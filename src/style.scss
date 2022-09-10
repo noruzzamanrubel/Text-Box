@@ -1,6 +1,18 @@
-// .wp-block-boomdevs-text-box {
-// 	background-color: #00f;
-// 	padding: 15px;
-// 	border-radius: 15px;
-// 	color: #fff;
-// }
+.wp-block-boomdevs-text-box {
+	background-color: #00f;
+	padding: 15px;
+	border-radius: 15px;
+	color: #fff;
+
+	&.text-box-align-left {
+		text-align: left;
+	}
+
+	&.text-box-align-center {
+		text-align: center;
+	}
+
+	&.text-box-align-right {
+		text-align: right;
+	}
+}

@@ -25,6 +25,14 @@
     "alignment": {
       "type": "string",
       "default": "left"
+    },
+    "text_color": {
+      "type": "string",
+      "default": "black"
+    },
+    "bg_color": {
+      "type": "string",
+      "default": "white"
     }
   }
 }

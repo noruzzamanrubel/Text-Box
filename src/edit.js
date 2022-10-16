@@ -2,12 +2,13 @@ import React from "react";
 
 import {
 	AlignmentToolbar,
-	BlockControls, ColorPalette,
-	InspectorControls, RichText,
-	useBlockProps
+	BlockControls,
+	InspectorControls,
+	RichText,
+	useBlockProps,
 } from "@wordpress/block-editor";
 
-import { TextControl } from "@wordpress/components";
+import { ColorPicker  } from '@wordpress/components';
 
 import { __ } from "@wordpress/i18n";
 import "./editor.scss";
@@ -42,25 +43,19 @@ export default function Edit({ attributes, setAttributes }) {
 			</BlockControls>
 
 			<InspectorControls key="setting">
-				<div id="gutenpride-controls">
-					<fieldset>
-						<legend className="blocks-base-control__label">
-							{__("Background color", "gutenpride")}
-						</legend>
-						<ColorPalette 
-							onChange={onChangeBackgroundColor}
-						/>
-					</fieldset>
-					
-					<fieldset>
-						<legend className="blocks-base-control__label">
-							{__("Text color", "gutenpride")}
-						</legend>
-						<ColorPalette 
-							onChange={onChangeTextColor}
-						/>
-					</fieldset>
-				</div>
+				<fieldset>
+					<legend className="blocks-base-control__label">
+						{__("Background color", "gutenpride")}
+					</legend>
+					<ColorPicker  onChange={onChangeBackgroundColor} />
+				</fieldset>
+
+				<fieldset>
+					<legend className="blocks-base-control__label">
+						{__("Text color", "gutenpride")}
+					</legend>
+					<ColorPicker  onChange={onChangeTextColor} />
+				</fieldset>
 			</InspectorControls>
 
 			<RichText

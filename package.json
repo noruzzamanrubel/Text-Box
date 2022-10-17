@@ -23,6 +23,7 @@
 	"dependencies": {
 		"@wordpress/block-editor": "^9.8.0",
 		"@wordpress/blocks": "^11.15.0",
-		"@wordpress/components": "^20.0.0"
+		"@wordpress/components": "^20.0.0",
+		"@wordpress/icons": "^9.10.0"
 	}
 }

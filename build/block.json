@@ -33,6 +33,18 @@
     "bg_color": {
       "type": "string",
       "default": "white"
+    },
+    "padding": {
+      "type": "number",
+      "default": 10
+    },
+    "style": {
+      "type": "object",
+      "default": {
+        "color": "black",
+        "backgroundColor": "white",
+        "padding": "10px"
+      }
     }
   }
 }

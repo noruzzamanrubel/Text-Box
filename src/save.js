@@ -10,7 +10,8 @@ export default function save({ attributes }) {
 		padding,
 		font_size,
 		font_weight,
-		line_height_unit
+		font_style,
+		text_transform,
 	} = attributes;
 
 	//classes
@@ -30,7 +31,8 @@ export default function save({ attributes }) {
 				padding: padding,
 				fontSize: font_size,
 				fontWeight: font_weight,
-				lineHeight: line_height_unit,
+				fontStyle: font_style,
+				textTransform: text_transform,
 			}}
 		/>
 	);

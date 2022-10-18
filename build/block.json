@@ -42,12 +42,13 @@
       "type": "number",
       "default": 400
     },
-    "line_height": {
-      "type": "number"
-    },
-    "line_height_unit": {
+    "font_style": {
       "type": "string",
-      "default": "10"
+      "default": "normal"
+    },
+    "text_transform": {
+      "type": "string",
+      "default": "none"
     },
     "padding": {
       "type": "number",

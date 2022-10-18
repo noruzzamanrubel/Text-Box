@@ -48,10 +48,13 @@ function Edit(_ref) {
     padding,
     font_size,
     font_weight,
-    line_height_unit
+    font_style,
+    text_transform
   } = attributes; //states
 
-  const [fontWeight, setFontWeight] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(font_weight); //align text
+  const [fontWeight, setFontWeight] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(font_weight);
+  const [fontStyle, setFontStyle] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(font_style);
+  const [textTransform, setTextTransform] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(text_transform); //align text
 
   const onChangeAlignment = newAlign => {
     setAttributes({
@@ -92,12 +95,19 @@ function Edit(_ref) {
     setAttributes({
       font_weight: newFontWeight
     });
-  }; //line height
+  }; //font style
 
 
-  const onChangeLineHeight = newLineHeight => {
+  const onChangeFontStyle = newFontStyle => {
     setAttributes({
-      line_height: newLineHeight
+      font_style: newFontStyle
+    });
+  }; //text transform
+
+
+  const onChangeTextTransform = newTextTransform => {
+    setAttributes({
+      text_transform: newTextTransform
     });
   }; //padding
 
@@ -119,13 +129,6 @@ function Edit(_ref) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
     value: font_size,
     onChange: onChangeFontSize,
-    min: 1,
-    max: 200
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
-    title: "Line Height"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
-    value: line_height_unit,
-    onChange: onChangeLineHeight,
     min: 1,
     max: 200
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
@@ -165,6 +168,78 @@ function Edit(_ref) {
       onChangeFontWeight(newFontWeight);
     },
     __nextHasNoMarginBottom: true
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+    title: "Font Style"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
+    options: [{
+      label: "normal",
+      value: "normal"
+    }, {
+      label: "italic",
+      value: "italic"
+    }, {
+      label: "oblique",
+      value: "oblique"
+    }, {
+      label: "initial",
+      value: "initial"
+    }, {
+      label: "inherit",
+      value: "inherit"
+    }, {
+      label: "unset",
+      value: "unset"
+    }, {
+      label: "revert",
+      value: "revert"
+    }],
+    value: fontStyle,
+    onChange: newFontStyle => {
+      setFontStyle(newFontStyle);
+      onChangeFontStyle(newFontStyle);
+    },
+    __nextHasNoMarginBottom: true
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+    title: "Text Transform"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
+    options: [{
+      label: "none",
+      value: "none"
+    }, {
+      label: "capitalize",
+      value: "capitalize"
+    }, {
+      label: "uppercase",
+      value: "uppercase"
+    }, {
+      label: "lowercase",
+      value: "lowercase"
+    }, {
+      label: "initial",
+      value: "initial"
+    }, {
+      label: "inherit",
+      value: "inherit"
+    }, {
+      label: "unset",
+      value: "unset"
+    }, {
+      label: "revert",
+      value: "revert"
+    }],
+    value: textTransform,
+    onChange: newTextTransform => {
+      setTextTransform(newTextTransform);
+      onChangeTextTransform(newTextTransform);
+    },
+    __nextHasNoMarginBottom: true
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+    title: "Padding"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
+    value: padding,
+    onChange: onChangePadding,
+    min: 1,
+    max: 200
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: "Color",
     initialOpen: true
@@ -194,12 +269,6 @@ function Edit(_ref) {
     }],
     value: text_color,
     onChange: onChangeTextColor
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
-    title: "Padding",
-    initialOpen: true
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalBoxControl, {
-    onChange: onChangePadding,
-    value: padding
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
     className: classes
   }), {
@@ -214,7 +283,8 @@ function Edit(_ref) {
       padding: padding,
       fontSize: font_size,
       fontWeight: font_weight,
-      lineHeight: line_height_unit
+      fontStyle: font_style,
+      textTransform: text_transform
     }
   })));
 }
@@ -290,7 +360,8 @@ function save(_ref) {
     padding,
     font_size,
     font_weight,
-    line_height_unit
+    font_style,
+    text_transform
   } = attributes; //classes
 
   const classes = classnames__WEBPACK_IMPORTED_MODULE_3___default()(`text-box-align-${alignment}`);
@@ -305,7 +376,8 @@ function save(_ref) {
       padding: padding,
       fontSize: font_size,
       fontWeight: font_weight,
-      lineHeight: line_height_unit
+      fontStyle: font_style,
+      textTransform: text_transform
     }
   }));
 }
@@ -508,7 +580,7 @@ function _extends() {
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"boomdevs/text-box","version":"0.1.0","title":"Text Box","category":"text","keywords":["text","box","paragraph"],"description":"Example block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"text-box","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"text":{"type":"string"},"alignment":{"type":"string","default":"left"},"text_color":{"type":"string","default":"black"},"bg_color":{"type":"string","default":"white"},"font_size":{"type":"number","default":15},"font_weight":{"type":"number","default":400},"line_height":{"type":"number"},"line_height_unit":{"type":"string","default":"10"},"padding":{"type":"number","default":10}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"boomdevs/text-box","version":"0.1.0","title":"Text Box","category":"text","keywords":["text","box","paragraph"],"description":"Example block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"text-box","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"text":{"type":"string"},"alignment":{"type":"string","default":"left"},"text_color":{"type":"string","default":"black"},"bg_color":{"type":"string","default":"white"},"font_size":{"type":"number","default":15},"font_weight":{"type":"number","default":400},"font_style":{"type":"string","default":"normal"},"text_transform":{"type":"string","default":"none"},"padding":{"type":"number","default":10}}}');
 
 /***/ })
 

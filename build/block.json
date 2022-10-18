@@ -34,17 +34,24 @@
       "type": "string",
       "default": "white"
     },
+    "font_size": {
+      "type": "number",
+      "default": 15
+    },
+    "font_weight": {
+      "type": "number",
+      "default": 400
+    },
+    "line_height": {
+      "type": "number"
+    },
+    "line_height_unit": {
+      "type": "string",
+      "default": "10"
+    },
     "padding": {
       "type": "number",
       "default": 10
-    },
-    "style": {
-      "type": "object",
-      "default": {
-        "color": "black",
-        "backgroundColor": "white",
-        "padding": "10px"
-      }
     }
   }
 }

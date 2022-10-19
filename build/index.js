@@ -32,6 +32,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const colors = [{
+  name: "Blue 20",
+  color: "#72aee6"
+}];
+
 
 
 
@@ -49,14 +54,24 @@ function Edit(_ref) {
     font_size,
     font_weight,
     font_style,
-    text_transform
-  } = attributes;
-  console.log(padding); //states
+    text_transform,
+    font_family
+  } = attributes; //states
 
+  const [fontSize, setFontSize] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(font_size);
   const [fontWeight, setFontWeight] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(font_weight);
   const [fontStyle, setFontStyle] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(font_style);
   const [textTransform, setTextTransform] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(text_transform);
-  const [paddingvalue, setPaddingValue] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(padding); //padding
+  const [paddingvalue, setPaddingValue] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(padding);
+  const [fontFamily, setFontFamily] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(font_family);
+
+  const onchangeFontFamily = value => {
+    setFontFamily(value);
+    setAttributes({
+      font_family: value
+    });
+  }; //padding
+
 
   const onChangePadding = value => {
     setPaddingValue(value);
@@ -95,6 +110,7 @@ function Edit(_ref) {
 
 
   const onChangeFontSize = value => {
+    setFontSize(value);
     setAttributes({
       font_size: value
     });
@@ -131,12 +147,36 @@ function Edit(_ref) {
     value: alignment,
     onChange: onChangeAlignment
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+    title: "Font Family"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
+    options: [{
+      label: "Default",
+      value: "default"
+    }, {
+      label: "Arial",
+      value: "Arial, Helvetica, sans-serif"
+    }, {
+      label: "Georgia",
+      value: "Georgia, serif"
+    }, {
+      label: "Tahoma",
+      value: "Tahoma, Geneva, sans-serif"
+    }, {
+      label: "Times New Roman",
+      value: "'Times New Roman', Times, serif"
+    }, {
+      label: "Verdana",
+      value: "Verdana, Geneva, sans-serif"
+    }],
+    value: fontFamily,
+    onChange: onchangeFontFamily,
+    __nextHasNoMarginBottom: true
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: "Font Size"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
-    value: font_size,
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.FontSizePicker, {
+    value: fontSize,
     onChange: onChangeFontSize,
-    min: 1,
-    max: 200
+    __nextHasNoMarginBottom: true
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: "Font Weight"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
@@ -283,7 +323,8 @@ function Edit(_ref) {
       fontSize: font_size,
       fontWeight: font_weight,
       fontStyle: font_style,
-      textTransform: text_transform
+      textTransform: text_transform,
+      fontFamily: font_family
     }
   })));
 }
@@ -360,9 +401,9 @@ function save(_ref) {
     font_size,
     font_weight,
     font_style,
-    text_transform
-  } = attributes;
-  console.log(padding); //classes
+    text_transform,
+    font_family
+  } = attributes; //classes
 
   const classes = classnames__WEBPACK_IMPORTED_MODULE_3___default()(`text-box-align-${alignment}`);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save({
@@ -380,7 +421,8 @@ function save(_ref) {
       fontSize: font_size,
       fontWeight: font_weight,
       fontStyle: font_style,
-      textTransform: text_transform
+      textTransform: text_transform,
+      fontFamily: font_family
     }
   }));
 }
@@ -583,7 +625,7 @@ function _extends() {
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"boomdevs/text-box","version":"0.1.0","title":"Text Box","category":"text","keywords":["text","box","paragraph"],"description":"Example block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"text-box","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"text":{"type":"string"},"alignment":{"type":"string","default":"left"},"text_color":{"type":"string","default":"black"},"bg_color":{"type":"string","default":"white"},"font_size":{"type":"number","default":15},"font_weight":{"type":"string","default":"400"},"font_style":{"type":"string","default":"normal"},"text_transform":{"type":"string","default":"none"},"padding":{"type":"object","default":{"top":"10px","right":"10px","bottom":"10px","left":"10px"}}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"boomdevs/text-box","version":"0.1.0","title":"Text Box","category":"text","keywords":["text","box","paragraph"],"description":"Example block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"text-box","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"text":{"type":"string"},"alignment":{"type":"string","default":"left"},"text_color":{"type":"string","default":"black"},"bg_color":{"type":"string","default":"white"},"font_size":{"type":"number","default":15},"font_weight":{"type":"string","default":"400"},"font_style":{"type":"string","default":"normal"},"text_transform":{"type":"string","default":"none"},"padding":{"type":"object","default":{"top":"10px","right":"10px","bottom":"10px","left":"10px"}},"font_family":{"type":"string","default":"Arial"}}}');
 
 /***/ })
 

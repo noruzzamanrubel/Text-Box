@@ -46,7 +46,6 @@
 			"type": "string",
 			"default": "none"
 		},
-
 		"padding": {
 			"type": "object",
 			"default": {
@@ -55,6 +54,10 @@
 				"bottom": "10px",
 				"left": "10px"
 			}
+		},
+		"font_family": {
+			"type": "string",
+			"default": "Arial"
 		}
 	}
 }

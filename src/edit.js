@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 
 import {
 	AlignmentToolbar,
@@ -14,8 +15,12 @@ import {
 	PanelRow,
 	RangeControl,
 	SelectControl,
+	FontSizePicker,
 	__experimentalBoxControl as BoxControl,
+	__experimentalBorderBoxControl as BorderBoxControl,
 } from "@wordpress/components";
+
+const colors = [{ name: "Blue 20", color: "#72aee6" }];
 
 import { useState } from "@wordpress/element";
 
@@ -35,15 +40,21 @@ export default function Edit({ attributes, setAttributes }) {
 		font_weight,
 		font_style,
 		text_transform,
+		font_family,
 	} = attributes;
-	console.log(padding);
 
 	//states
+	const [fontSize, setFontSize] = useState(font_size);
 	const [fontWeight, setFontWeight] = useState(font_weight);
 	const [fontStyle, setFontStyle] = useState(font_style);
 	const [textTransform, setTextTransform] = useState(text_transform);
 	const [paddingvalue, setPaddingValue] = useState(padding);
+	const [fontFamily, setFontFamily] = useState(font_family);
 
+	const onchangeFontFamily = (value) => {
+		setFontFamily(value);
+		setAttributes({ font_family: value });
+	};
 	//padding
 	const onChangePadding = (value) => {
 		setPaddingValue(value);
@@ -72,6 +83,7 @@ export default function Edit({ attributes, setAttributes }) {
 
 	//font size
 	const onChangeFontSize = (value) => {
+		setFontSize(value);
 		setAttributes({ font_size: value });
 	};
 
@@ -106,12 +118,30 @@ export default function Edit({ attributes, setAttributes }) {
 			</BlockControls>
 
 			<InspectorControls>
+				<PanelBody title="Font Family">
+					<SelectControl
+						options={[
+							{ label: "Default", value: "default" },
+							{ label: "Arial", value: "Arial, Helvetica, sans-serif" },
+							{ label: "Georgia", value: "Georgia, serif" },
+							{ label: "Tahoma", value: "Tahoma, Geneva, sans-serif" },
+							{
+								label: "Times New Roman",
+								value: "'Times New Roman', Times, serif",
+							},
+							{ label: "Verdana", value: "Verdana, Geneva, sans-serif" },
+						]}
+						value={fontFamily}
+						onChange={onchangeFontFamily}
+						__nextHasNoMarginBottom
+					/>
+				</PanelBody>
+
 				<PanelBody title="Font Size">
-					<RangeControl
-						value={font_size}
+					<FontSizePicker
+						value={fontSize}
 						onChange={onChangeFontSize}
-						min={1}
-						max={200}
+						__nextHasNoMarginBottom
 					/>
 				</PanelBody>
 				<PanelBody title="Font Weight">
@@ -219,6 +249,7 @@ export default function Edit({ attributes, setAttributes }) {
 					fontWeight: font_weight,
 					fontStyle: font_style,
 					textTransform: text_transform,
+					fontFamily: font_family,
 				}}
 			/>
 		</>

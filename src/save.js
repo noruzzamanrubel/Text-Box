@@ -12,8 +12,8 @@ export default function save({ attributes }) {
 		font_weight,
 		font_style,
 		text_transform,
+		font_family,
 	} = attributes;
-	console.log(padding)
 
 	//classes
 	const classes = classnames(
@@ -37,6 +37,8 @@ export default function save({ attributes }) {
 				fontWeight: font_weight,
 				fontStyle: font_style,
 				textTransform: text_transform,
+				fontFamily: font_family,
+
 			}}
 		/>
 	);

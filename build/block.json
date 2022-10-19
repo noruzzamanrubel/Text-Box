@@ -39,8 +39,8 @@
       "default": 15
     },
     "font_weight": {
-      "type": "number",
-      "default": 400
+      "type": "string",
+      "default": "400"
     },
     "font_style": {
       "type": "string",
@@ -51,8 +51,13 @@
       "default": "none"
     },
     "padding": {
-      "type": "number",
-      "default": 10
+      "type": "object",
+      "default": {
+        "top": "10px",
+        "right": "10px",
+        "bottom": "10px",
+        "left": "10px"
+      }
     }
   }
 }

@@ -13,6 +13,7 @@ export default function save({ attributes }) {
 		font_style,
 		text_transform,
 	} = attributes;
+	console.log(padding)
 
 	//classes
 	const classes = classnames(
@@ -28,7 +29,10 @@ export default function save({ attributes }) {
 			style={{
 				backgroundColor: bg_color,
 				color: text_color,
-				padding: padding,
+				paddingTop: padding.top,
+				paddingRight: padding.right,
+				paddingBottom: padding.bottom,
+				paddingLeft: padding.left,
 				fontSize: font_size,
 				fontWeight: font_weight,
 				fontStyle: font_style,

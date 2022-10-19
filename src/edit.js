@@ -36,55 +36,61 @@ export default function Edit({ attributes, setAttributes }) {
 		font_style,
 		text_transform,
 	} = attributes;
+	console.log(padding);
 
 	//states
 	const [fontWeight, setFontWeight] = useState(font_weight);
 	const [fontStyle, setFontStyle] = useState(font_style);
 	const [textTransform, setTextTransform] = useState(text_transform);
+	const [paddingvalue, setPaddingValue] = useState(padding);
+
+	//padding
+	const onChangePadding = (value) => {
+		setPaddingValue(value);
+		setAttributes({ padding: value });
+	};
 
 	//align text
-	const onChangeAlignment = (newAlign) => {
-		setAttributes({ alignment: newAlign });
+	const onChangeAlignment = (value) => {
+		setAttributes({ alignment: value });
 	};
 
 	//text
-	const onChangeText = (newText) => {
-		setAttributes({ text: newText });
+	const onChangeText = (value) => {
+		setAttributes({ text: value });
 	};
 
 	//text color
-	const onChangeTextColor = (newTextColor) => {
-		setAttributes({ text_color: newTextColor });
+	const onChangeTextColor = (value) => {
+		setAttributes({ text_color: value });
 	};
 
 	//background color
-	const onChangeBackgroundColor = (newBackgroundColor) => {
-		setAttributes({ bg_color: newBackgroundColor });
+	const onChangeBackgroundColor = (value) => {
+		setAttributes({ bg_color: value });
 	};
 
 	//font size
-	const onChangeFontSize = (newFontSize) => {
-		setAttributes({ font_size: newFontSize });
+	const onChangeFontSize = (value) => {
+		setAttributes({ font_size: value });
 	};
 
 	//font weight
-	const onChangeFontWeight = (newFontWeight) => {
-		setAttributes({ font_weight: newFontWeight });
+	const onChangeFontWeight = (value) => {
+		setFontWeight(value);
+		setAttributes({ font_weight: value });
 	};
 
 	//font style
-	const onChangeFontStyle = (newFontStyle) => {
-		setAttributes({ font_style: newFontStyle });
+	const onChangeFontStyle = (value) => {
+		setFontStyle(value);
+		setAttributes({ font_style: value });
 	};
 
 	//text transform
-	const onChangeTextTransform = (newTextTransform) => {
-		setAttributes({ text_transform: newTextTransform });
-	};
-
-	//padding
-	const onChangePadding = (newPadding) => {
-		setAttributes({ padding: newPadding });
+	const onChangeTextTransform = (value) => {
+		setTextTransform(value);
+		setAttributes({ text_transform: value });
 	};
 
 	//classes
@@ -122,10 +128,7 @@ export default function Edit({ attributes, setAttributes }) {
 							{ label: "Black", value: "900" },
 						]}
 						value={fontWeight}
-						onChange={(newFontWeight) => {
-							setFontWeight(newFontWeight);
-							onChangeFontWeight(newFontWeight);
-						}}
+						onChange={onChangeFontWeight}
 						__nextHasNoMarginBottom
 					/>
 				</PanelBody>
@@ -141,10 +144,7 @@ export default function Edit({ attributes, setAttributes }) {
 							{ label: "revert", value: "revert" },
 						]}
 						value={fontStyle}
-						onChange={(newFontStyle) => {
-							setFontStyle(newFontStyle);
-							onChangeFontStyle(newFontStyle);
-						}}
+						onChange={onChangeFontStyle}
 						__nextHasNoMarginBottom
 					/>
 				</PanelBody>
@@ -161,19 +161,15 @@ export default function Edit({ attributes, setAttributes }) {
 							{ label: "revert", value: "revert" },
 						]}
 						value={textTransform}
-						onChange={(newTextTransform) => {
-							setTextTransform(newTextTransform);
-							onChangeTextTransform(newTextTransform);
-						}}
+						onChange={onChangeTextTransform}
 						__nextHasNoMarginBottom
 					/>
 				</PanelBody>
 				<PanelBody title="Padding">
-					<RangeControl
-						value={padding}
+					<BoxControl
+						values={paddingvalue}
 						onChange={onChangePadding}
-						min={1}
-						max={200}
+						__nextHasNoMarginBottom
 					/>
 				</PanelBody>
 			</InspectorControls>
@@ -215,7 +211,10 @@ export default function Edit({ attributes, setAttributes }) {
 				style={{
 					backgroundColor: bg_color,
 					color: text_color,
-					padding: padding,
+					paddingTop: padding.top,
+					paddingRight: padding.right,
+					paddingBottom: padding.bottom,
+					paddingLeft: padding.left,
 					fontSize: font_size,
 					fontWeight: font_weight,
 					fontStyle: font_style,

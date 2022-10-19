@@ -50,71 +50,77 @@ function Edit(_ref) {
     font_weight,
     font_style,
     text_transform
-  } = attributes; //states
+  } = attributes;
+  console.log(padding); //states
 
   const [fontWeight, setFontWeight] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(font_weight);
   const [fontStyle, setFontStyle] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(font_style);
-  const [textTransform, setTextTransform] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(text_transform); //align text
+  const [textTransform, setTextTransform] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(text_transform);
+  const [paddingvalue, setPaddingValue] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(padding); //padding
 
-  const onChangeAlignment = newAlign => {
+  const onChangePadding = value => {
+    setPaddingValue(value);
     setAttributes({
-      alignment: newAlign
+      padding: value
+    });
+  }; //align text
+
+
+  const onChangeAlignment = value => {
+    setAttributes({
+      alignment: value
     });
   }; //text
 
 
-  const onChangeText = newText => {
+  const onChangeText = value => {
     setAttributes({
-      text: newText
+      text: value
     });
   }; //text color
 
 
-  const onChangeTextColor = newTextColor => {
+  const onChangeTextColor = value => {
     setAttributes({
-      text_color: newTextColor
+      text_color: value
     });
   }; //background color
 
 
-  const onChangeBackgroundColor = newBackgroundColor => {
+  const onChangeBackgroundColor = value => {
     setAttributes({
-      bg_color: newBackgroundColor
+      bg_color: value
     });
   }; //font size
 
 
-  const onChangeFontSize = newFontSize => {
+  const onChangeFontSize = value => {
     setAttributes({
-      font_size: newFontSize
+      font_size: value
     });
   }; //font weight
 
 
-  const onChangeFontWeight = newFontWeight => {
+  const onChangeFontWeight = value => {
+    setFontWeight(value);
     setAttributes({
-      font_weight: newFontWeight
+      font_weight: value
     });
   }; //font style
 
 
-  const onChangeFontStyle = newFontStyle => {
+  const onChangeFontStyle = value => {
+    setFontStyle(value);
     setAttributes({
-      font_style: newFontStyle
+      font_style: value
     });
   }; //text transform
 
 
-  const onChangeTextTransform = newTextTransform => {
+  const onChangeTextTransform = value => {
+    setTextTransform(value);
     setAttributes({
-      text_transform: newTextTransform
-    });
-  }; //padding
-
-
-  const onChangePadding = newPadding => {
-    setAttributes({
-      padding: newPadding
+      text_transform: value
     });
   }; //classes
 
@@ -163,10 +169,7 @@ function Edit(_ref) {
       value: "900"
     }],
     value: fontWeight,
-    onChange: newFontWeight => {
-      setFontWeight(newFontWeight);
-      onChangeFontWeight(newFontWeight);
-    },
+    onChange: onChangeFontWeight,
     __nextHasNoMarginBottom: true
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: "Font Style"
@@ -194,10 +197,7 @@ function Edit(_ref) {
       value: "revert"
     }],
     value: fontStyle,
-    onChange: newFontStyle => {
-      setFontStyle(newFontStyle);
-      onChangeFontStyle(newFontStyle);
-    },
+    onChange: onChangeFontStyle,
     __nextHasNoMarginBottom: true
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: "Text Transform"
@@ -228,18 +228,14 @@ function Edit(_ref) {
       value: "revert"
     }],
     value: textTransform,
-    onChange: newTextTransform => {
-      setTextTransform(newTextTransform);
-      onChangeTextTransform(newTextTransform);
-    },
+    onChange: onChangeTextTransform,
     __nextHasNoMarginBottom: true
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: "Padding"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
-    value: padding,
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalBoxControl, {
+    values: paddingvalue,
     onChange: onChangePadding,
-    min: 1,
-    max: 200
+    __nextHasNoMarginBottom: true
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: "Color",
     initialOpen: true
@@ -280,7 +276,10 @@ function Edit(_ref) {
     style: {
       backgroundColor: bg_color,
       color: text_color,
-      padding: padding,
+      paddingTop: padding.top,
+      paddingRight: padding.right,
+      paddingBottom: padding.bottom,
+      paddingLeft: padding.left,
       fontSize: font_size,
       fontWeight: font_weight,
       fontStyle: font_style,
@@ -362,7 +361,8 @@ function save(_ref) {
     font_weight,
     font_style,
     text_transform
-  } = attributes; //classes
+  } = attributes;
+  console.log(padding); //classes
 
   const classes = classnames__WEBPACK_IMPORTED_MODULE_3___default()(`text-box-align-${alignment}`);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save({
@@ -373,7 +373,10 @@ function save(_ref) {
     style: {
       backgroundColor: bg_color,
       color: text_color,
-      padding: padding,
+      paddingTop: padding.top,
+      paddingRight: padding.right,
+      paddingBottom: padding.bottom,
+      paddingLeft: padding.left,
       fontSize: font_size,
       fontWeight: font_weight,
       fontStyle: font_style,
@@ -580,7 +583,7 @@ function _extends() {
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"boomdevs/text-box","version":"0.1.0","title":"Text Box","category":"text","keywords":["text","box","paragraph"],"description":"Example block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"text-box","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"text":{"type":"string"},"alignment":{"type":"string","default":"left"},"text_color":{"type":"string","default":"black"},"bg_color":{"type":"string","default":"white"},"font_size":{"type":"number","default":15},"font_weight":{"type":"number","default":400},"font_style":{"type":"string","default":"normal"},"text_transform":{"type":"string","default":"none"},"padding":{"type":"number","default":10}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"boomdevs/text-box","version":"0.1.0","title":"Text Box","category":"text","keywords":["text","box","paragraph"],"description":"Example block scaffolded with Create Block tool.","supports":{"html":false},"textdomain":"text-box","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"text":{"type":"string"},"alignment":{"type":"string","default":"left"},"text_color":{"type":"string","default":"black"},"bg_color":{"type":"string","default":"white"},"font_size":{"type":"number","default":15},"font_weight":{"type":"string","default":"400"},"font_style":{"type":"string","default":"normal"},"text_transform":{"type":"string","default":"none"},"padding":{"type":"object","default":{"top":"10px","right":"10px","bottom":"10px","left":"10px"}}}}');
 
 /***/ })
 

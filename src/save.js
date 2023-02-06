@@ -6,7 +6,7 @@ export default function save({ attributes }) {
 		text,
 		text_color,
 		bg_color,
-		alignment,
+		align,
 		padding,
 		font_size,
 		font_weight,
@@ -17,7 +17,7 @@ export default function save({ attributes }) {
 
 	//classes
 	const classes = classnames(
-		`text-box-align-${alignment}`,
+		`text-box-align-${align}`,
 	);
 	return (
 		<RichText.Content

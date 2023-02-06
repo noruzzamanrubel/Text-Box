@@ -16,9 +16,9 @@ const attributes = {
   text: {
     type: "string"
   },
-  alignment: {
-    "type": "string",
-    "default": "left"
+  align: {
+    type: "string",
+    default: "left"
   },
   text_color: {
     "type": "string",
@@ -90,6 +90,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+ // import Inspector from "./inspector";
 
 
 
@@ -104,13 +105,14 @@ const colors = [{
 function Edit(_ref) {
   let {
     attributes,
-    setAttributes
+    setAttributes,
+    isSelected
   } = _ref;
   const {
     text,
     text_color,
     bg_color,
-    alignment,
+    align,
     padding,
     font_size,
     font_weight,
@@ -144,7 +146,7 @@ function Edit(_ref) {
 
   const onChangeAlignment = value => {
     setAttributes({
-      alignment: value
+      align: value
     });
   }; //text
 
@@ -202,10 +204,9 @@ function Edit(_ref) {
   }; //classes
 
 
-  const classes = classnames__WEBPACK_IMPORTED_MODULE_7___default()(`text-box-align-${alignment}` // `text-box-font-weight-${font_weight}`
-  );
+  const classes = classnames__WEBPACK_IMPORTED_MODULE_7___default()(`text-box-align-${align}`);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.AlignmentToolbar, {
-    value: alignment,
+    value: align,
     onChange: onChangeAlignment
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: "Font Family"
@@ -460,7 +461,7 @@ function save(_ref) {
     text,
     text_color,
     bg_color,
-    alignment,
+    align,
     padding,
     font_size,
     font_weight,
@@ -469,7 +470,7 @@ function save(_ref) {
     font_family
   } = attributes; //classes
 
-  const classes = classnames__WEBPACK_IMPORTED_MODULE_3___default()(`text-box-align-${alignment}`);
+  const classes = classnames__WEBPACK_IMPORTED_MODULE_3___default()(`text-box-align-${align}`);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save({
     className: classes
   }), {
@@ -689,7 +690,7 @@ function _extends() {
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"boomdevs/text-box","version":"0.1.0","title":"Text Box","category":"text","keywords":["text","box","paragraph"],"description":"Example block scaffolded with Create Block tool.","supports":{"align":true,"alignWide":false,"reusable":false,"lightBlockWrapper":true},"textdomain":"text-box","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"boomdevs/text-box","version":"0.1.0","title":"Text Box","category":"text","keywords":["text","box","paragraph"],"description":"Example block scaffolded with Create Block tool.","supports":{"reusable":false,"className":true,"anchor":true},"textdomain":"text-box","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

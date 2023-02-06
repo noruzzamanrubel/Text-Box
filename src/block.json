@@ -8,10 +8,9 @@
 	"keywords": ["text", "box", "paragraph"],
 	"description": "Example block scaffolded with Create Block tool.",
 	"supports": {
-		"align": true,
-		"alignWide": false,
 		"reusable": false,
-		"lightBlockWrapper": true
+		"className": true,
+		"anchor": true
   	},
 	"textdomain": "text-box",
 	"editorScript": "file:./index.js",

@@ -4,10 +4,9 @@ const attributes = {
 	text: {
 		type: "string",
 	},
-
-	alignment: {
-		"type": "string",
-		"default": "left"
+	align: {
+		type: "string",
+		default: "left",
 	},
 
 	text_color: {

@@ -1,6 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 
+// import Inspector from "./inspector";
+
 import {
 	AlignmentToolbar,
 	BlockControls,
@@ -29,12 +31,12 @@ import "./editor.scss";
 
 import classnames from "classnames";
 
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit({ attributes, setAttributes, isSelected }) {
 	const {
 		text,
 		text_color,
 		bg_color,
-		alignment,
+		align,
 		padding,
 		font_size,
 		font_weight,
@@ -63,7 +65,7 @@ export default function Edit({ attributes, setAttributes }) {
 
 	//align text
 	const onChangeAlignment = (value) => {
-		setAttributes({ alignment: value });
+		setAttributes({ align: value });
 	};
 
 	//text
@@ -107,14 +109,13 @@ export default function Edit({ attributes, setAttributes }) {
 
 	//classes
 	const classes = classnames(
-		`text-box-align-${alignment}`
-		// `text-box-font-weight-${font_weight}`
+		`text-box-align-${align}`
 	);
 
 	return (
 		<>
 			<BlockControls>
-				<AlignmentToolbar value={alignment} onChange={onChangeAlignment} />
+				<AlignmentToolbar value={align} onChange={onChangeAlignment} />
 			</BlockControls>
 
 			<InspectorControls>

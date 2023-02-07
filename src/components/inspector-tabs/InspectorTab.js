@@ -1,6 +1,6 @@
 import { applyFilters } from '@wordpress/hooks';
 import { useRef, useEffect  } from '@wordpress/element';
-import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
+import getUAGEditorStateLocalStorage from '../getUAGEditorStateLocalStorage';
 import { select } from '@wordpress/data';
 
 const InspectorTab = ( props ) => {

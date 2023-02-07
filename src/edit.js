@@ -3,6 +3,13 @@ import { useEffect } from "react";
 
 // import Inspector from "./inspector";
 
+import Settings from "./settings";
+
+import googleFonts from './google-font/google-font.json';
+
+
+import InspectorTabs from './components/inspector-tabs/InspectorTabs';
+import InspectorTab from './components/inspector-tabs/InspectorTab';
 import {
 	AlignmentToolbar,
 	BlockControls,
@@ -112,6 +119,14 @@ export default function Edit({ attributes, setAttributes, isSelected }) {
 		`text-box-align-${align}`
 	);
 
+	// get label and value as font-family name and font-family name
+	const fontFamilies = googleFonts.items.map((font) => {
+		return {
+			label: font.family,
+			value: font.family
+		}
+	});
+
 	return (
 		<>
 			<BlockControls>
@@ -119,19 +134,15 @@ export default function Edit({ attributes, setAttributes, isSelected }) {
 			</BlockControls>
 
 			<InspectorControls>
+				<InspectorTabs>
+
+				</InspectorTabs>
+			</InspectorControls>
+
+			<InspectorControls>
 				<PanelBody title="Font Family">
 					<SelectControl
-						options={[
-							{ label: "Default", value: "default" },
-							{ label: "Arial", value: "Arial, Helvetica, sans-serif" },
-							{ label: "Georgia", value: "Georgia, serif" },
-							{ label: "Tahoma", value: "Tahoma, Geneva, sans-serif" },
-							{
-								label: "Times New Roman",
-								value: "'Times New Roman', Times, serif",
-							},
-							{ label: "Verdana", value: "Verdana, Geneva, sans-serif" },
-						]}
+						options={ fontFamilies }
 						value={fontFamily}
 						onChange={onchangeFontFamily}
 						__nextHasNoMarginBottom

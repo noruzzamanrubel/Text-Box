@@ -11,7 +11,7 @@ import {
 	useEffect,
 } from '@wordpress/element';
 import { select } from '@wordpress/data';
-import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
+import getUAGEditorStateLocalStorage from '../getUAGEditorStateLocalStorage';
 
 const LAYOUT = 'general',
 	STYLE = 'style',
@@ -19,12 +19,12 @@ const LAYOUT = 'general',
 
 const InspectorTabs = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
-	useLayoutEffect( () => {
-		styles.use();
-		return () => {
-			styles.unuse();
-		};
-	}, [] );
+	// useLayoutEffect( () => {
+	// 	styles.use();
+	// 	return () => {
+	// 		styles.unuse();
+	// 	};
+	// }, [] );
 
 	const uagSettingState = getUAGEditorStateLocalStorage( 'uagSettingState' );
 
